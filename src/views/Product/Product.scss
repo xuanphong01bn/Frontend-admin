@@ -1,0 +1,18 @@
+.addnew{
+    margin: 10px 10px;
+    // margin-right: 0;
+    // float: right;
+}
+.content{
+    margin-left: 20vw;
+    .include{
+        .title{
+                border: 1px solid grey;
+        }
+        .detail-product{
+            .edit{
+                margin-right: 5px;
+            }
+        }
+    }
+}

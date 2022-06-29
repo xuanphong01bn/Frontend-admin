@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+}
+.home-detail{
+    height: 100vh;
+    // background-image:url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000');
+    margin-left:20vw;
+    .home-text{
+        margin-top: 30vw;
+        
+        p{
+            color: red;
+            margin-left: 20vw;
+            
+        }
+    }
+    .car-slide{
+        margin:0 auto;
+    }
+    .title{
+        font-size: 40px;
+        letter-spacing: 2px;
+        color: #f4f1ec;
+        font-weight: 1000;
+    }
+    
+}
