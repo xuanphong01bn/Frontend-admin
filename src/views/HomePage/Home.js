@@ -25,14 +25,14 @@ class Home extends React.Component {
         return (
             <>
                 <div className="home-detail" >
-                    <div id="carouselExampleSlidesOnly" class="carousel slide h-100 d-flex align-items-center justify-content-center car-slide" data-ride="carousel">
+                    <div className="home-header">
+                        <div style={{ height: "5vh" }}></div>
+                        <div className="page-title">Home Page of Admin</div>
+                    </div>
+
+                    <div id="carouselExampleSlidesOnly" class="carousel slide d-flex align-items-center justify-content-center car-slide" data-ride="carousel">
                         <div>
                             <div className='container-fluid' >
-                                <div className="row">
-                                    <div className="col-sm-12 title">
-                                        <h3>Home Page of Admin</h3>
-                                    </div>
-                                </div>
                                 <div className="row">
                                     <div className="col-12">
                                         <Carousel>
