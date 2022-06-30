@@ -45,7 +45,7 @@ class EditProduct extends React.Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div><input type="submit" value=" Lưu chỉnh sửa " onClick={() => this.handleSubmit()} /></div>
+                            <div><input type="submit" value=" Lưu chỉnh sửa" onClick={() => this.handleSubmit()} /></div>
                         </div>
                     </div>
 

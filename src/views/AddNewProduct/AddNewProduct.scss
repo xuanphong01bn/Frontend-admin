@@ -1,4 +1,4 @@
-.biggest-include{
+.content{
     background-image: url('https://images.freecreatives.com/wp-content/uploads/2015/06/best-car-wallpapers.jpg');
     margin-left: 20vw;
     .page-title{
@@ -10,7 +10,7 @@
         align-items: center;
         
     }
-    .include{
+    .editarea{
         height: 80vh;
         .page-content{
             color:black;
@@ -18,15 +18,12 @@
             border: 1px solid grey;
             margin: 0 10vh;
             padding: 5vh 0;
-            textarea{
-                margin-left: 20px;
-            }
         }
     }
 }
-// textarea{
-//     margin-left: 20px;
-// }
-// row{
-//     margin-top: 10px
-// }
+.textarea{
+    margin-left: 20px;
+}
+.row{
+    margin-top: 10px
+}

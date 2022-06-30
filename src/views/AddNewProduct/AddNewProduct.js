@@ -8,12 +8,12 @@ class AddNewProduct extends React.Component {
     }
     render() {
         return (
-            <div className="biggest-include">
+            <div className="content">
                 <div className="page-title">
                     <div style={{ height: "5vh" }}></div>
                     Thêm mới sản phẩm
                 </div>
-                <div className="container-fluid include">
+                <div className="container-fluid editarea">
                     <div className="page-content">
                         <div className="row">
                             <form className="col-12">
