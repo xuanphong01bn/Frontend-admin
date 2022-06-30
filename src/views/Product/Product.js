@@ -50,6 +50,62 @@ class Product extends React.Component {
 
                                 </div>
                             </div>
+                            <div className="row detail-product">
+                                <div className="col-6 text ">Mazda cx-5</div>
+                                <div className="col-3 text ">35000$</div>
+                                <div className="col-3 text">
+                                    <Link to="/edit-product">
+                                        <span><button className="btn-primary edit" onClick={() => this.handleEdit()} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                    </Link>
+                                    <span>
+                                        <button className="btn-danger" onClick={() => this.handleDelete()}><FontAwesomeIcon icon={faTrashCan} /></button>
+
+                                    </span>
+
+                                </div>
+                            </div>
+                            <div className="row detail-product">
+                                <div className="col-6 text ">Mazda cx-5</div>
+                                <div className="col-3 text ">35000$</div>
+                                <div className="col-3 text">
+                                    <Link to="/edit-product">
+                                        <span><button className="btn-primary edit" onClick={() => this.handleEdit()} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                    </Link>
+                                    <span>
+                                        <button className="btn-danger" onClick={() => this.handleDelete()}><FontAwesomeIcon icon={faTrashCan} /></button>
+
+                                    </span>
+
+                                </div>
+                            </div>
+                            <div className="row detail-product">
+                                <div className="col-6 text ">Mazda cx-5</div>
+                                <div className="col-3 text ">35000$</div>
+                                <div className="col-3 text">
+                                    <Link to="/edit-product">
+                                        <span><button className="btn-primary edit" onClick={() => this.handleEdit()} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                    </Link>
+                                    <span>
+                                        <button className="btn-danger" onClick={() => this.handleDelete()}><FontAwesomeIcon icon={faTrashCan} /></button>
+
+                                    </span>
+
+                                </div>
+                            </div>
+                            <div className="row detail-product">
+                                <div className="col-6 text ">Mazda cx-5</div>
+                                <div className="col-3 text ">35000$</div>
+                                <div className="col-3 text">
+                                    <Link to="/edit-product">
+                                        <span><button className="btn-primary edit" onClick={() => this.handleEdit()} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                    </Link>
+                                    <span>
+                                        <button className="btn-danger" onClick={() => this.handleDelete()}><FontAwesomeIcon icon={faTrashCan} /></button>
+
+                                    </span>
+
+                                </div>
+                            </div>
                         </div>
 
 

@@ -41,6 +41,66 @@ class Order extends React.Component {
                                 </span>
                             </div>
                         </div>
+                        <div className="row detail-order">
+                            <div className="col-4 text ">#abcdef</div>
+                            <div className="col-2 text ">35000$</div>
+                            <div className="col-2 text ">1</div>
+                            <div className="col-2 text ">Đang lấy hàng</div>
+                            <div className="col-2 text">
+                                <Link to="/detail-order">
+                                    <span><button className="btn-primary edit" onClick={() => this.handleWatch()} ><FontAwesomeIcon icon={faEye} /></button></span>
+                                </Link>
+
+                                <span>
+                                    <button className="btn-danger" onClick={() => this.handleDelete()}><FontAwesomeIcon icon={faTrashCan} /></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="row detail-order">
+                            <div className="col-4 text ">#abcdef</div>
+                            <div className="col-2 text ">35000$</div>
+                            <div className="col-2 text ">1</div>
+                            <div className="col-2 text ">Đang lấy hàng</div>
+                            <div className="col-2 text">
+                                <Link to="/detail-order">
+                                    <span><button className="btn-primary edit" onClick={() => this.handleWatch()} ><FontAwesomeIcon icon={faEye} /></button></span>
+                                </Link>
+
+                                <span>
+                                    <button className="btn-danger" onClick={() => this.handleDelete()}><FontAwesomeIcon icon={faTrashCan} /></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="row detail-order">
+                            <div className="col-4 text ">#abcdef</div>
+                            <div className="col-2 text ">35000$</div>
+                            <div className="col-2 text ">1</div>
+                            <div className="col-2 text ">Đang lấy hàng</div>
+                            <div className="col-2 text">
+                                <Link to="/detail-order">
+                                    <span><button className="btn-primary edit" onClick={() => this.handleWatch()} ><FontAwesomeIcon icon={faEye} /></button></span>
+                                </Link>
+
+                                <span>
+                                    <button className="btn-danger" onClick={() => this.handleDelete()}><FontAwesomeIcon icon={faTrashCan} /></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div className="row detail-order">
+                            <div className="col-4 text ">#abcdef</div>
+                            <div className="col-2 text ">35000$</div>
+                            <div className="col-2 text ">1</div>
+                            <div className="col-2 text ">Đang lấy hàng</div>
+                            <div className="col-2 text">
+                                <Link to="/detail-order">
+                                    <span><button className="btn-primary edit" onClick={() => this.handleWatch()} ><FontAwesomeIcon icon={faEye} /></button></span>
+                                </Link>
+
+                                <span>
+                                    <button className="btn-danger" onClick={() => this.handleDelete()}><FontAwesomeIcon icon={faTrashCan} /></button>
+                                </span>
+                            </div>
+                        </div>
 
 
 
