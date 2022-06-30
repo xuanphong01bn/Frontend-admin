@@ -14,14 +14,15 @@ class AddNewProduct extends React.Component {
                     Thêm mới sản phẩm
                 </div>
                 <div className="container-fluid include">
-                    <div className="page-content"><div className="row">
-                        <form className="col-12">
-                            <label>Tên sản phẩm</label><br />
-                            <input type="text" placeholder="Mazda 3" name="name" /><br />
+                    <div className="page-content">
+                        <div className="row">
+                            <form className="col-12">
+                                <label>Tên sản phẩm</label><br />
+                                <input type="text" placeholder="Mazda 3" name="name" /><br />
 
-                        </form>
+                            </form>
 
-                    </div>
+                        </div>
                         <div className="row">
                             <form className="col-12"><label>Giá </label><br />
                                 <input type="text" placeholder="30000" name="name" /> $</form>
@@ -46,7 +47,8 @@ class AddNewProduct extends React.Component {
                         </div>
                         <div className="row">
                             <div><input type="submit" value=" Thêm " onClick={() => this.handleSubmit()} /></div>
-                        </div></div>
+                        </div>
+                    </div>
 
 
                 </div>

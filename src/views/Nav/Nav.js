@@ -51,14 +51,14 @@ class Nav extends React.Component {
                             </a></li>
                         </Link>
 
-                        <li><a href="#">
+                        {/* <li><a href="#">
                             <span className="icon"><FontAwesomeIcon icon={faAccusoft} /></span>
                             <span className="text">Tài khoản</span>
                         </a></li>
                         <li><a href="#">
                             <span className="icon"><FontAwesomeIcon icon={faScrewdriverWrench} /></span>
                             <span className="text">Cài đặt</span>
-                        </a></li>
+                        </a></li> */}
                     </ul>
                     <div>
                         <ul className="social " >

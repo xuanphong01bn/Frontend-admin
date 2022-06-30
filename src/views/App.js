@@ -16,6 +16,7 @@ import {
   Link
 } from "react-router-dom";
 import EditProduct from './EditProduct/EditProduct';
+import DetailOrder from './DetailOrder/DetailOrder';
 
 // import ChildComponent from './Example/ChildComponent';
 function App() {
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route path="/edit-product">
               <EditProduct></EditProduct>
+            </Route>
+            <Route>
+              <DetailOrder></DetailOrder>
             </Route>
           </Switch>
         </header>
