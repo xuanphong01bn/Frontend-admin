@@ -38,7 +38,7 @@ class ModalUser extends React.Component {
             console.log('Check inside loop', this.state[arrInput[i]], arrInput[i])
             if (!this.state[arrInput[i]]) {
                 isValid = false;
-                alert('Missing parameter ' + arrInput[i]);
+                alert(`Missing parameter ` + arrInput[i]);
                 break;
             }
         }

@@ -9,6 +9,7 @@ import {
     Link, NavLink
 } from "react-router-dom";
 import ModalUser from "./ModalUser";
+import { toast } from "react-toastify";
 import { createNewUserService } from "../../services/service";
 class Users extends React.Component {
     constructor(props) {
@@ -64,12 +65,15 @@ class Users extends React.Component {
         try {
             let res = await createNewUserService(data);
             console.log('res create user: ', res);
+            await this.getAllUserFromReact();
+            this.setState({
+                isOpenModalUser: false,
+            })
+            toast.success('Thêm thành công')
         } catch (e) {
             console.log(e);
+            toast.error('Lỗi trùng lặp')
         }
-
-        // console.log('>>> check data from child: ', data)
-
     }
     render() {
         let { listUser } = this.state;
