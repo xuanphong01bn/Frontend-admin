@@ -3,7 +3,7 @@ import "./Nav.css";
 import avatar from "../../assets/images/avatar.jpg";
 import 'font-awesome/css/font-awesome.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouseUser, faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons"
+import { faHouseUser, faScrewdriverWrench, faUser } from "@fortawesome/free-solid-svg-icons"
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faAccusoft, faFacebookF, faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -48,6 +48,12 @@ class Nav extends React.Component {
                             <li><a href="#">
                                 <span className="icon"><FontAwesomeIcon icon={faList} /></span>
                                 <span className="text">Đơn hàng</span>
+                            </a></li>
+                        </Link>
+                        <Link to="/all-users" className="link">
+                            <li><a href="#">
+                                <span className="icon"><FontAwesomeIcon icon={faUser} /></span>
+                                <span className="text">Người dùng</span>
                             </a></li>
                         </Link>
 

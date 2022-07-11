@@ -9,6 +9,7 @@ import AddNewProduct from './AddNewProduct/AddNewProduct.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Users from './Users/Users';
 import {
   BrowserRouter as Router,
   Switch,
@@ -42,8 +43,11 @@ function App() {
             <Route path="/edit-product">
               <EditProduct></EditProduct>
             </Route>
-            <Route>
+            <Route path="/detail-order">
               <DetailOrder></DetailOrder>
+            </Route>
+            <Route path="/all-users">
+              <Users></Users>
             </Route>
           </Switch>
         </header>
