@@ -11,6 +11,7 @@ import {
 import ModalUser from "./ModalUser";
 import { toast } from "react-toastify";
 import { createNewUserService } from "../../services/service";
+import { deleteUserService } from "../../services/service";
 class Users extends React.Component {
     constructor(props) {
         super(props);
@@ -75,6 +76,18 @@ class Users extends React.Component {
             toast.error('Lỗi trùng lặp')
         }
     }
+    handleDeleteUser = async (user) => { // user là item lấy từ vòng loop trong hàm render
+        try {
+            let a = user.id
+            await deleteUserService(a);
+            await this.getAllUserFromReact();
+            // console.log(res)
+            // toast.success('Xoá thành công')
+        } catch (e) {
+            console.log(e)
+        }
+        await this.getAllUserFromReact();
+    }
     render() {
         let { listUser } = this.state;
         return (
@@ -89,32 +102,37 @@ class Users extends React.Component {
 
                 <div className="page-title">Danh sách người dùng</div>
                 <div className="container-fluid">
-                    <div className="btn-warning col-2" style={{ cursor: 'pointer', marginBottom: '10px', padding: '5px 5px' }}
+                    <div className="btn-warning col-2" style={{ borderRadius: '5%', border: '1px solid grey', cursor: 'pointer', marginBottom: '10px', padding: '5px 5px' }}
                         onClick={() => this.handleAddNewUser()}
                     >Thêm mới người dùng</div>
                     <div className="page-content">
                         <div className="row title ">
-                            <span className="col-1 ">Id</span>
+                            <span className="col-1 ">STT</span>
                             <span className="col-2 ">Tên</span>
                             <span className="col-2 ">SĐT</span>
                             <span className="col-3 ">Email</span>
                             <span className="col-2 ">Địa chỉ</span>
                             <span className="col-2 ">Thao tác</span>
-
                         </div>
                         <div className="row detail-user">
                             {listUser && listUser.length > 0 &&
                                 listUser.map((item, index) => {
                                     return (
                                         <>
-                                            <div className="col-1 text ">{item.id}</div>
+                                            <div className="col-1 text ">{index + 1}</div>
                                             <div className="col-2 text ">{item.username}</div>
                                             <div className="col-2 text ">{item.telephone}</div>
                                             <div className="col-3 text ">{item.email}</div>
                                             <div className="col-2 text">
                                                 {item.address}
                                             </div>
-                                            <div className="col-2">Adding thao tác</div>
+                                            <div className="col-2">
+                                                <span><button className="btn-primary edit" onClick={() => this.handleEdit()} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                                <span>
+                                                    <button className="btn-danger" onClick={() => this.handleDeleteUser(item)}><FontAwesomeIcon icon={faTrashCan} /></button>
+
+                                                </span>
+                                            </div>
                                         </>
 
 

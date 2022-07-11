@@ -51,6 +51,13 @@ class ModalUser extends React.Component {
             this.props.createNewUser(this.state);
         }
         // console.log('>>> data modal', this.state)
+        this.setState({
+            username: '',
+            password: '',
+            telephone: '',
+            email: '',
+            address: '',
+        })
     }
     render() {
         console.log('>>> check child props', this.props);
