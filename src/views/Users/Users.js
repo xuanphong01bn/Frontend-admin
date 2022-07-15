@@ -10,14 +10,17 @@ import {
 } from "react-router-dom";
 import ModalUser from "./ModalUser";
 import { toast } from "react-toastify";
-import { createNewUserService } from "../../services/service";
-import { deleteUserService } from "../../services/service";
+import { createNewUserService, deleteUserService } from "../../services/service";
+import ModalEdit from "./ModalEdit";
+import { editUserService } from "../../services/service";
 class Users extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             listUser: [],
-            isOpenModalUser: false
+            isOpenModalUser: false,
+            isOpenModalEdit: false,
+            UserEdit: '',
         }
     }
     /** Life cycle 
@@ -36,7 +39,7 @@ class Users extends React.Component {
     getAllUserFromReact = async () => {
         let res = await axios.get('http://localhost:8000/users', {
             headers: {
-                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTc1NTA2MTksImV4cCI6MTY1NzYzNzAxOSwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.YtTg2YdgO2-XiAy8ZjN2GoleqbgClaRbudZ0ngMRVEo'
+                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTc4NjI1OTQsImV4cCI6MTY1Nzk0ODk5NCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.ciJfKyzAsp5t4AzlxuyV_YwJvYedQR0CG48wtlVlPi0'
             }
         });
         console.log('>>>check res: ', res.data.data);
@@ -57,9 +60,23 @@ class Users extends React.Component {
     //         isOpenModalUser: false,
     //     })
     // }
+    handleEditUser = (user) => {
+        // alert('hehe')
+
+        this.setState({
+            isOpenModalEdit: true,
+            UserEdit: user,
+        })
+        console.log('Id user edit la: ', this.state.idUserEdit)
+    }
     toggleUserModal = () => {
         this.setState({
             isOpenModalUser: !this.state.isOpenModalUser,
+        })
+    }
+    toggleUserEdit = () => {
+        this.setState({
+            isOpenModalEdit: !this.state.isOpenModalEdit,
         })
     }
     createNewUser = async (data) => { // data được truyền từ component con
@@ -76,18 +93,41 @@ class Users extends React.Component {
             toast.error('Lỗi trùng lặp')
         }
     }
-    handleDeleteUser = async (user) => { // user là item lấy từ vòng loop trong hàm render
+    editUser = async (data, id) => { // data truyền từ component con ( this.state)
         try {
-            let a = user.id
-            await deleteUserService(a);
+            console.log('data truyen len la: ', data)
+            let res = await axios.put(`http://localhost:8000/users/${id}`, data, {
+                headers: {
+                    'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTc5MDY3OTcsImV4cCI6MTY1Nzk5MzE5NywiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.nUAdqPoSPIHfPPTuiYDd-6_x6BymCWp4FkTQ1OW7WD4'
+                }
+            });
+            console.log('res edit user: ', res);
             await this.getAllUserFromReact();
-            // console.log(res)
-            // toast.success('Xoá thành công')
+            this.setState({
+                isOpenModalEdit: false,
+            });
+            // alert('Sửa thành công')
         } catch (e) {
             console.log(e)
         }
+    }
+    handleDeleteUser = async (user) => { // user là item lấy từ vòng loop trong hàm render
+        // window.confirm('Bạn chắc chắn xoá ?');
+        if (window.confirm('Bạn chắc chắn xoá ?')) {
+            try {
+                let a = user.id
+                await deleteUserService(a);
+                await this.getAllUserFromReact();
+                // console.log(res)
+                // toast.success('Xoá thành công')
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
         await this.getAllUserFromReact();
     }
+
     render() {
         let { listUser } = this.state;
         return (
@@ -99,6 +139,13 @@ class Users extends React.Component {
                     toggleFromParent={this.toggleUserModal}
                     createNewUser={this.createNewUser}
                 />
+                {this.state.isOpenModalEdit && <ModalEdit
+                    isOpen={this.state.isOpenModalEdit}
+                    toggleFromParent={this.toggleUserEdit}
+                    UserEdit={this.state.UserEdit}
+                    editUser={this.editUser}
+                />}
+
 
                 <div className="page-title">Danh sách người dùng</div>
                 <div className="container-fluid">
@@ -127,7 +174,7 @@ class Users extends React.Component {
                                                 {item.address}
                                             </div>
                                             <div className="col-2">
-                                                <span><button className="btn-primary edit" onClick={() => this.handleEdit()} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                                <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
                                                 <span>
                                                     <button className="btn-danger" onClick={() => this.handleDeleteUser(item)}><FontAwesomeIcon icon={faTrashCan} /></button>
 

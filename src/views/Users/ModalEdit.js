@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-class ModalUser extends React.Component {
+class ModalEdit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -9,17 +9,27 @@ class ModalUser extends React.Component {
             telephone: '',
             email: '',
             address: '',
-
         }
+
     }
     componentDidMount() {
-
+        console.log('Did mout ne') // ko mout thì bản chất cái modal này nó đã mout ở bên cha rồi nên ko thể mout lại nữa
+        let user = this.props.UserEdit;
+        // console.log('User cần sửa là : ', user);
+        this.setState({
+            username: user.username,
+            password: user.password,
+            telephone: user.telephone,
+            email: user.email,
+            address: user.address
+        })
     }
+
+
     toggle = () => {
         // alert('me toggle')
         this.props.toggleFromParent()
     }
-    // toggle: nút đóng, mở
     handleOnchaneInput = (event, id) => {
         let copyState = { ...this.state };
         copyState[id] = event.target.value; // do id đã đặt bằng các trường trong state
@@ -29,7 +39,6 @@ class ModalUser extends React.Component {
         }, () => {
             console.log(copyState);
         })
-
     }
     checkValideInput = () => {
         let isValid = true;
@@ -44,11 +53,12 @@ class ModalUser extends React.Component {
         }
         return isValid;
     }
-    handleAddNewUser = () => {
+    handleEditUser = () => {
+        let user = this.props.UserEdit;
         let isValid = this.checkValideInput();
         if (isValid === true) {
             //call API
-            this.props.createNewUser(this.state);
+            this.props.editUser(this.state, user.id);
         }
         // console.log('>>> data modal', this.state)
         this.setState({
@@ -60,9 +70,8 @@ class ModalUser extends React.Component {
         })
     }
     render() {
-
-        // console.log('>>> check child props', this.props);
-        // console.log('>>> check child open modal', this.props.isOpen);
+        let user = this.props.UserEdit;
+        console.log('User cần sửa là : ', user);
         return (
             <div>
                 <Modal
@@ -78,9 +87,9 @@ class ModalUser extends React.Component {
                             <div className="row">
                                 <div className="col-6 ">
                                     <label>Tên</label>
-                                    <div ><input type="text" style={{ width: '100%' }}
+                                    <div ><input type="text" style={{ width: '100%' }} value={this.state.username}
                                         onChange={(event) => this.handleOnchaneInput(event, "username")}
-                                        value={this.state.username}
+
                                     /></div>
 
                                 </div>
@@ -123,7 +132,7 @@ class ModalUser extends React.Component {
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={() => this.handleAddNewUser()}>Thêm mới</Button>{' '}
+                        <Button color="primary" onClick={() => this.handleEditUser()}>Lưu lại</Button>{' '}
                         <Button color="secondary" onClick={() => this.toggle()}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
@@ -131,4 +140,4 @@ class ModalUser extends React.Component {
         )
     }
 }
-export default ModalUser;
+export default ModalEdit;
