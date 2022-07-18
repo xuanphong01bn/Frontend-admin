@@ -92,8 +92,16 @@ body{
 	background: #fff;
 	color: #3d5654;
 }
+.vertical_bar .menu-div{
+	position: absolute;
+}
+.vertical_bar .social-div{
 
+	position: relative;
+	top:25vh
+}
 .vertical_bar .social{
+	
 	width: 80%;
 	display: flex;
 	justify-content: center;

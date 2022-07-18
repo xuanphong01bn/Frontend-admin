@@ -17,7 +17,6 @@ class Nav extends React.Component {
     render() {
         return (
             <>
-
                 {/* <div className="vertical_wrap"> */}
 
                 <div className="vertical_bar ml-auto ms-auto">
@@ -29,44 +28,44 @@ class Nav extends React.Component {
                         <p className="title">Admin</p>
                         {/* <p className="sub_title">aniabukstein@gmail.com</p> */}
                     </div>
-                    <ul className="menu">
-                        <Link to="/" exact={true} className="link">
-                            <li><a href="#" >
-                                {/* <span className="icon"><i className="fas fa-solid fa-house-user"></i></span> */}
-
-                                <span className="icon"><FontAwesomeIcon icon={faHouseUser} /></span>
-                                <span className="text" >Trang chủ</span>
-                            </a></li>
-                        </Link>
-                        <Link to="/list-product" className="link">
-                            <li><a href="#">
-                                <span className="icon"><FontAwesomeIcon icon={faCar} /></span>
-                                <span className="text">Sản Phẩm</span>
-                            </a></li>
-                        </Link>
-                        <Link to="/order" className="link">
-                            <li><a href="#">
-                                <span className="icon"><FontAwesomeIcon icon={faList} /></span>
-                                <span className="text">Đơn hàng</span>
-                            </a></li>
-                        </Link>
-                        <Link to="/all-users" className="link">
-                            <li><a href="#">
-                                <span className="icon"><FontAwesomeIcon icon={faUser} /></span>
-                                <span className="text">Người dùng</span>
-                            </a></li>
-                        </Link>
-
-                        {/* <li><a href="#">
-                            <span className="icon"><FontAwesomeIcon icon={faAccusoft} /></span>
-                            <span className="text">Tài khoản</span>
-                        </a></li>
-                        <li><a href="#">
-                            <span className="icon"><FontAwesomeIcon icon={faScrewdriverWrench} /></span>
-                            <span className="text">Cài đặt</span>
-                        </a></li> */}
-                    </ul>
                     <div>
+                        <ul className="menu">
+                            <Link to="/" exact={true} className="link">
+                                <li><a href="#" >
+                                    {/* <span className="icon"><i className="fas fa-solid fa-house-user"></i></span> */}
+
+                                    <span className="icon"><FontAwesomeIcon icon={faHouseUser} /></span>
+                                    <span className="text" >Trang chủ</span>
+                                </a></li>
+                            </Link>
+                            <Link to="/list-product" className="link">
+                                <li><a href="#">
+                                    <span className="icon"><FontAwesomeIcon icon={faCar} /></span>
+                                    <span className="text">Sản Phẩm</span>
+                                </a></li>
+                            </Link>
+                            <Link to="/order" className="link">
+                                <li><a href="#">
+                                    <span className="icon"><FontAwesomeIcon icon={faList} /></span>
+                                    <span className="text">Đơn hàng</span>
+                                </a></li>
+                            </Link>
+                            <Link to="/all-users" className="link">
+                                <li><a href="#">
+                                    <span className="icon"><FontAwesomeIcon icon={faUser} /></span>
+                                    <span className="text">Người dùng</span>
+                                </a></li>
+                            </Link>
+                            <Link to="/all-admins" className="link">
+                                <li><a href="#">
+                                    <span className="icon"><FontAwesomeIcon icon={faUser} /></span>
+                                    <span className="text">Admin</span>
+                                </a></li>
+                            </Link>
+                        </ul>
+                    </div>
+
+                    <div className="social-div">
                         <ul className="social " >
                             <li><a href="https://www.facebook.com" target="_blank"><FontAwesomeIcon icon={faFacebookF} /></a></li>
                             <li><a href="https://www.instagram.com" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a></li>

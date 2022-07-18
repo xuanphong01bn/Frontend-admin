@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Users from './Users/Users';
+import Admins from './Admins/Admins';
 import {
   BrowserRouter as Router,
   Switch,
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route path="/all-users">
               <Users></Users>
+            </Route>
+            <Route path="/all-admins">
+              <Admins />
             </Route>
           </Switch>
         </header>

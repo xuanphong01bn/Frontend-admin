@@ -39,7 +39,7 @@ class Users extends React.Component {
     getAllUserFromReact = async () => {
         let res = await axios.get('http://localhost:8000/users', {
             headers: {
-                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTc4NjI1OTQsImV4cCI6MTY1Nzk0ODk5NCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.ciJfKyzAsp5t4AzlxuyV_YwJvYedQR0CG48wtlVlPi0'
+                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
             }
         });
         console.log('>>>check res: ', res.data.data);
@@ -98,7 +98,7 @@ class Users extends React.Component {
             console.log('data truyen len la: ', data)
             let res = await axios.put(`http://localhost:8000/users/${id}`, data, {
                 headers: {
-                    'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTc5MDY3OTcsImV4cCI6MTY1Nzk5MzE5NywiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.nUAdqPoSPIHfPPTuiYDd-6_x6BymCWp4FkTQ1OW7WD4'
+                    'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
                 }
             });
             console.log('res edit user: ', res);
