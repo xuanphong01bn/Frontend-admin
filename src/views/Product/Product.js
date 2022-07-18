@@ -10,8 +10,10 @@ import {
 } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createNewUserService, deleteUserService } from "../../services/service";
-import { createNewCarService } from "../../services/service";
+import { createNewCarService, editCarService } from "../../services/service";
 import ModalCar from "./ModalCar";
+import ModalEdit from "./ModalEdit";
+
 import { faTurkishLiraSign } from "@fortawesome/free-solid-svg-icons";
 class Product extends React.Component {
     constructor(props) {
@@ -19,8 +21,11 @@ class Product extends React.Component {
         this.state = {
             listProduct: [],
             isOpenModalCar: false,
+            isOpenEdit: false,
+            editItem: '',
         }
     }
+    // Hiển thị Car
     async componentDidMount() {
         await this.getAllCarFromReact();
 
@@ -36,6 +41,7 @@ class Product extends React.Component {
             listProduct: res.data.data,
         })
     }
+    // Thêm mới 
     handleAddNewCar = () => {
         this.setState({
             isOpenModalCar: true,
@@ -51,7 +57,7 @@ class Product extends React.Component {
         try {
             let res = await createNewCarService(data);
             console.log('res create car: ', res);
-            await this.getAllUserFromReact();
+            await this.getAllCarFromReact();
             this.setState({
                 isOpenModalCar: false,
             })
@@ -60,6 +66,29 @@ class Product extends React.Component {
             console.log(e);
             toast.error('Lỗi')
         }
+    }
+    // Sửa
+    handleEdit = (item) => {
+        this.setState({
+            isOpenEdit: true,
+            editItem: item,
+        })
+        console.log('edit item: ', this.state.editItem)
+
+    }
+    toggleModal = () => {
+        this.setState({
+            isOpenEdit: !this.state.isOpenEdit,
+        })
+    }
+    editCar = async (data, id) => {
+        await editCarService(data, id)
+        await this.getAllCarFromReact();
+        await this.getAllCarFromReact();
+        this.setState({
+            isOpenEdit: false,
+        })
+
     }
     render() {
         let { listProduct } = this.state;
@@ -70,6 +99,15 @@ class Product extends React.Component {
                     toggleCarModal={this.toggleCarModal}
                     createNewCar={this.createNewCar}
                 />
+                {this.state.isOpenEdit &&
+                    <ModalEdit
+                        isOpen={this.state.isOpenEdit}
+                        toggleModal={this.toggleModal}
+                        editItem={this.state.editItem}
+                        editCar={this.editCar}
+                    />
+
+                }
                 <div className="page-title">Danh sách sản phẩm</div>
                 <div className="container-fluid">
                     <div className="btn-warning col-2" style={{ borderRadius: '5%', border: '1px solid grey', cursor: 'pointer', marginBottom: '10px', padding: '5px 5px' }}
@@ -94,7 +132,7 @@ class Product extends React.Component {
 
                                             <div className="col-4">
                                                 <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faEye} /></button></span>
-                                                <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                                <span><button className="btn-primary edit" onClick={() => this.handleEdit(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
                                                 <span>
                                                     <button className="btn-danger" onClick={() => this.handleDeleteUser(item)}><FontAwesomeIcon icon={faTrashCan} /></button> </span>
                                             </div>

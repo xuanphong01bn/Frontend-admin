@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-class ModalCar extends React.Component {
+class ModalEdit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,11 +13,18 @@ class ModalCar extends React.Component {
         }
     }
     componentDidMount() {
-
+        let a = this.props.editItem;
+        this.setState({
+            name: a.name,
+            image: a.iamge,
+            description: a.description,
+            price: a.price,
+            year: a.year,
+        })
     }
     toggle = () => {
         // alert('me toggle')
-        this.props.toggleCarModal()
+        this.props.toggleModal()
     }
     // toggle: nút đóng, mở
     handleOnchaneInput = (event, id) => {
@@ -44,11 +51,13 @@ class ModalCar extends React.Component {
     //     }
     //     return isValid;
     // }
-    handleAddNewCar = () => {
+    handleEdit = () => {
         // let isValid = this.checkValideInput();
         // if (isValid === true) {
         //call API
-        this.props.createNewCar(this.state);
+        let a = this.props.editItem;
+
+        this.props.editCar(this.state, a.id);
         // }
         console.log('>>> data modal', this.state)
         this.state = {
@@ -89,6 +98,7 @@ class ModalCar extends React.Component {
                                     <div>
                                         <input type="file" id="myfile" name="myfile"
                                             onChange={(event) => this.handleOnchaneInput(event, "image")}
+                                            value={this.state.image}
                                         />
                                     </div>
                                 </div>
@@ -108,7 +118,6 @@ class ModalCar extends React.Component {
                                         onChange={(event) => this.handleOnchaneInput(event, "year")}
                                         value={this.state.year}
                                     /></div>
-
                                 </div>
                             </div>
                             <div className="row">
@@ -116,14 +125,16 @@ class ModalCar extends React.Component {
                                     <label>Mô tả </label>
                                     <div>
                                         <textarea type="text" style={{ width: '100%' }}
-                                            onChange={(event) => this.handleOnchaneInput(event, "description")} />
+                                            onChange={(event) => this.handleOnchaneInput(event, "description")}
+                                            value={this.state.description} />
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={() => this.handleAddNewCar()}>Thêm mới</Button>{' '}
+                        <Button color="primary" onClick={() => this.handleEdit()}>Lưu</Button>{' '}
                         <Button color="secondary" onClick={() => this.toggle()}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
@@ -131,4 +142,4 @@ class ModalCar extends React.Component {
         )
     }
 }
-export default ModalCar;
+export default ModalEdit;
