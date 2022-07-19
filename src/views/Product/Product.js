@@ -9,11 +9,10 @@ import {
     Link, NavLink
 } from "react-router-dom";
 import { toast } from "react-toastify";
-import { createNewUserService, deleteUserService } from "../../services/service";
+import { createNewUserService, deleteCarService, deleteUserService } from "../../services/service";
 import { createNewCarService, editCarService } from "../../services/service";
 import ModalCar from "./ModalCar";
 import ModalEdit from "./ModalEdit";
-
 import { faTurkishLiraSign } from "@fortawesome/free-solid-svg-icons";
 class Product extends React.Component {
     constructor(props) {
@@ -90,6 +89,13 @@ class Product extends React.Component {
         })
 
     }
+    // Xoá
+    handleDelete = async (item) => {
+        console.log(item);
+        await deleteCarService(item.id);
+        await this.getAllCarFromReact();
+    }
+
     render() {
         let { listProduct } = this.state;
         return (
@@ -134,7 +140,7 @@ class Product extends React.Component {
                                                 <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faEye} /></button></span>
                                                 <span><button className="btn-primary edit" onClick={() => this.handleEdit(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
                                                 <span>
-                                                    <button className="btn-danger" onClick={() => this.handleDeleteUser(item)}><FontAwesomeIcon icon={faTrashCan} /></button> </span>
+                                                    <button className="btn-danger" onClick={() => this.handleDelete(item)}><FontAwesomeIcon icon={faTrashCan} /></button> </span>
                                             </div>
                                         </>
                                     )

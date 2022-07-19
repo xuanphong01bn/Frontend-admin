@@ -69,8 +69,22 @@ const editBillService = (data, id) => {
         }
     });
 }
+const deleteBillService = (user_id, bill_id) => {
+    return axios.delete(`http://localhost:8000/bills/${user_id}/${bill_id}`, {
+        headers: {
+            'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
+        }
+    });
+}
+const deleteCarService = (id) => {
+    return axios.delete(`http://localhost:8000/products/${id}`, {
+        headers: {
+            'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
+        }
+    });
+}
 export {
     createNewUserService, deleteUserService, editUserService, createNewAdminService, deleteAdminService,
     editAdminService, createNewCarService, createNewOrderService, editCarService
-    , editBillService
+    , editBillService, deleteBillService, deleteCarService
 }

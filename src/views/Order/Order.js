@@ -15,7 +15,7 @@ import ModalOrder from "./ModalOrder";
 import { faTurkishLiraSign } from "@fortawesome/free-solid-svg-icons";
 import { createNewOrderService } from "../../services/service";
 import ModalEdit from "./ModalEdit";
-import { editBillService } from "../../services/service";
+import { editBillService, deleteBillService } from "../../services/service";
 class Order extends React.Component {
     constructor(props) {
         super(props);
@@ -102,6 +102,18 @@ class Order extends React.Component {
             isOpenEdit: false,
         })
     }
+    // Xoá 
+    handleDelete = async (item) => {
+        console.log('item :', item)
+        try {
+            let a = item.id;
+            let b = item.user_id;
+            await deleteBillService(b, a)
+        } catch (e) {
+            console.log(e)
+        }
+        await this.getAllOrderFromReact();
+    }
     render() {
         let { listOrder, listUser } = this.state;
         return (
@@ -152,7 +164,7 @@ class Order extends React.Component {
                                                 <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faEye} /></button></span>
                                                 <span><button className="btn-primary edit" onClick={() => this.handleEdit(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
                                                 <span>
-                                                    <button className="btn-danger" onClick={() => this.handleDeleteUser(item)}><FontAwesomeIcon icon={faTrashCan} /></button> </span>
+                                                    <button className="btn-danger" onClick={() => this.handleDelete(item)}><FontAwesomeIcon icon={faTrashCan} /></button> </span>
                                             </div>
                                         </>
                                     )
