@@ -16,6 +16,7 @@ import { faTurkishLiraSign } from "@fortawesome/free-solid-svg-icons";
 import { createNewOrderService } from "../../services/service";
 import ModalEdit from "./ModalEdit";
 import { editBillService, deleteBillService } from "../../services/service";
+import ModalDetail from "./ModalDetail";
 class Order extends React.Component {
     constructor(props) {
         super(props);
@@ -25,6 +26,8 @@ class Order extends React.Component {
             isOpenModalOrder: false,
             isOpenEdit: false,
             editItem: '',
+            isOpenDetail: false,
+            detailItem: '',
         }
     }
     // Hiển thị
@@ -59,12 +62,15 @@ class Order extends React.Component {
     handleAddNewCar = () => {
         this.setState({
             isOpenModalOrder: true,
+            isOpenEdit: false,
         })
 
     }
-    toggleOrderModal = () => {
+    toggleModal = () => {
         this.setState({
-            isOpenModalOrder: !this.state.isOpenModalOrder,
+            isOpenModalOrder: false,
+            isOpenEdit: false,
+            isOpenDetail: false,
         })
     }
     createNewOrder = async (data, id) => { // data được truyền từ component con
@@ -89,11 +95,6 @@ class Order extends React.Component {
         })
         console.log('edit item: ', this.state.editItem)
     }
-    toggleModal = () => {
-        this.setState({
-            isOpenEdit: !this.state.isOpenEdit,
-        })
-    }
     editBill = async (data, id) => {
         await editBillService(data, id);
         await this.getAllOrderFromReact();
@@ -114,6 +115,15 @@ class Order extends React.Component {
         }
         await this.getAllOrderFromReact();
     }
+    // Hiển thị chi tiết
+    handleDetail = (item) => {
+        console.log('detail item :', item)
+        this.setState({
+            isOpenDetail: true,
+            detailItem: item,
+
+        })
+    }
     render() {
         let { listOrder, listUser } = this.state;
         return (
@@ -121,7 +131,7 @@ class Order extends React.Component {
                 {this.state.isOpenModalOrder && <ModalOrder
                     listUser={this.state.listUser}
                     isOpen={this.state.isOpenModalOrder}
-                    toggleOrderModal={this.toggleOrderModal}
+                    toggleOrderModal={this.toggleModal}
                     createNewOrder={this.createNewOrder}
                 />
 
@@ -132,6 +142,13 @@ class Order extends React.Component {
                         editItem={this.state.editItem}
                         toggleModal={this.toggleModal}
                         editBill={this.editBill}
+                    />
+                }
+                {this.state.isOpenDetail &&
+                    <ModalDetail
+                        isOpen={this.state.isOpenDetail}
+                        detailItem={this.state.detailItem}
+                        toggleModal={this.toggleModal}
                     />
 
                 }
@@ -161,14 +178,13 @@ class Order extends React.Component {
                                             <div className="col-3 text">{item.status}</div>
 
                                             <div className="col-3">
-                                                <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faEye} /></button></span>
+                                                <span><button className="btn-primary edit" onClick={() => this.handleDetail(item)} ><FontAwesomeIcon icon={faEye} /></button></span>
                                                 <span><button className="btn-primary edit" onClick={() => this.handleEdit(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
                                                 <span>
                                                     <button className="btn-danger" onClick={() => this.handleDelete(item)}><FontAwesomeIcon icon={faTrashCan} /></button> </span>
                                             </div>
                                         </>
                                     )
-
                                 })}
 
                         </div>

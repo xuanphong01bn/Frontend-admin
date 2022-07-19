@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-class ModalEdit extends React.Component {
+class ModalDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,11 @@ class ModalEdit extends React.Component {
         }
     }
     componentDidMount() {
-        let a = this.props.editItem;
+        let a = this.props.detailItem;
+        console.log('image la :', a.image)
+        let b = a.iamge;
+        console.log(typeof (b))
+
         this.setState({
             name: a.name,
             image: a.iamge,
@@ -21,23 +25,25 @@ class ModalEdit extends React.Component {
             price: a.price,
             year: a.year,
         })
+        console.log('a :', a.image)
+        console.log('check :', this.state.image);
     }
     toggle = () => {
         // alert('me toggle')
         this.props.toggleModal()
     }
     // toggle: nút đóng, mở
-    handleOnchaneInput = (event, id) => {
-        let copyState = { ...this.state };
-        copyState[id] = event.target.value; // do id đã đặt bằng các trường trong state
+    // handleOnchaneInput = (event, id) => {
+    //     let copyState = { ...this.state };
+    //     copyState[id] = event.target.value; // do id đã đặt bằng các trường trong state
 
-        this.setState({
-            ...copyState,
-        }, () => {
-            console.log(copyState);
-        })
+    //     this.setState({
+    //         ...copyState,
+    //     }, () => {
+    //         console.log(copyState);
+    //     })
 
-    }
+    // }
     // checkValideInput = () => {
     //     let isValid = true;
     //     let arrInput = ['name', 'image', 'price', 'year', 'description'];
@@ -51,13 +57,11 @@ class ModalEdit extends React.Component {
     //     }
     //     return isValid;
     // }
-    handleEdit = () => {
+    handleAddNewCar = () => {
         // let isValid = this.checkValideInput();
         // if (isValid === true) {
         //call API
-        let a = this.props.editItem;
-
-        this.props.editCar(this.state, a.id);
+        this.props.createNewCar(this.state);
         // }
         console.log('>>> data modal', this.state)
         this.state = {
@@ -70,7 +74,7 @@ class ModalEdit extends React.Component {
         }
     }
     render() {
-
+        // let { a } = this.props.detailItem;
         // console.log('>>> check child props', this.props);
         // console.log('>>> check child open modal', this.props.isOpen);
         return (
@@ -82,59 +86,45 @@ class ModalEdit extends React.Component {
                     size='lg'
                     centered
                 >
-                    <ModalHeader toggle={() => this.toggle()}>Sửa thông tin xe</ModalHeader>
+                    <ModalHeader toggle={() => this.toggle()}>Chi tiết xe</ModalHeader>
                     <ModalBody>
                         <div className="container">
                             <div className="row">
                                 <div className="col-6 ">
                                     <label>Mẫu xe</label>
-                                    <div ><input type="text" style={{ width: '100%' }}
-                                        onChange={(event) => this.handleOnchaneInput(event, "name")}
-                                        value={this.state.name}
-                                    /></div>
+                                    <div>{this.state.name}</div>
                                 </div>
                                 <div className="col-6 ">
                                     <label>Hình ảnh</label>
                                     <div>
-                                        <input type="file" id="myfile" name="myfile"
-                                            onChange={(event) => this.handleOnchaneInput(event, "image")}
-                                            value={this.state.image}
-                                        />
+                                        Hình ảnh này:
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6 ">
                                     <label>Giá (triệu đồng )</label>
-                                    <div><input type="text" style={{ width: '100%' }}
-                                        onChange={(event) => this.handleOnchaneInput(event, "price")}
-                                        value={this.state.price}
-                                    /></div>
+                                    <div>{this.state.price}</div>
 
                                 </div>
                                 <div className="col-6 ">
                                     <label>Năm sản xuất</label>
-                                    <div><input type="text" style={{ width: '100%' }}
-                                        onChange={(event) => this.handleOnchaneInput(event, "year")}
-                                        value={this.state.year}
-                                    /></div>
+                                    <div>{this.state.year}</div>
+
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-12 ">
                                     <label>Mô tả </label>
                                     <div>
-                                        <textarea type="text" style={{ width: '100%' }}
-                                            onChange={(event) => this.handleOnchaneInput(event, "description")}
-                                            value={this.state.description} />
-
+                                        {this.state.description}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={() => this.handleEdit()}>Lưu</Button>{' '}
+                        {/* <Button color="primary" onClick={() => this.handleAddNewCar()}>Thêm mới</Button>{' '} */}
                         <Button color="secondary" onClick={() => this.toggle()}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
@@ -142,4 +132,4 @@ class ModalEdit extends React.Component {
         )
     }
 }
-export default ModalEdit;
+export default ModalDetail;

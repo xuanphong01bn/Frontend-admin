@@ -14,6 +14,7 @@ import { createNewCarService, editCarService } from "../../services/service";
 import ModalCar from "./ModalCar";
 import ModalEdit from "./ModalEdit";
 import { faTurkishLiraSign } from "@fortawesome/free-solid-svg-icons";
+import ModalDetail from "./ModalDetail";
 class Product extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,9 @@ class Product extends React.Component {
             listProduct: [],
             isOpenModalCar: false,
             isOpenEdit: false,
+            isOpenDetail: false,
             editItem: '',
+            detailItem: '',
         }
     }
     // Hiển thị Car
@@ -47,11 +50,7 @@ class Product extends React.Component {
         })
 
     }
-    toggleCarModal = () => {
-        this.setState({
-            isOpenModalCar: !this.state.isOpenModalCar,
-        })
-    }
+
     createNewCar = async (data) => { // data được truyền từ component con
         try {
             let res = await createNewCarService(data);
@@ -75,11 +74,6 @@ class Product extends React.Component {
         console.log('edit item: ', this.state.editItem)
 
     }
-    toggleModal = () => {
-        this.setState({
-            isOpenEdit: !this.state.isOpenEdit,
-        })
-    }
     editCar = async (data, id) => {
         await editCarService(data, id)
         await this.getAllCarFromReact();
@@ -95,7 +89,21 @@ class Product extends React.Component {
         await deleteCarService(item.id);
         await this.getAllCarFromReact();
     }
-
+    // Xem chi tiết
+    handleDetail = (item) => {
+        console.log(item)
+        this.setState({
+            isOpenDetail: true,
+            detailItem: item,
+        })
+    }
+    toggleModal = () => {
+        this.setState({
+            isOpenDetail: false,
+            isOpenEdit: false,
+            isOpenModalCar: false,
+        })
+    }
     render() {
         let { listProduct } = this.state;
         return (
@@ -111,6 +119,14 @@ class Product extends React.Component {
                         toggleModal={this.toggleModal}
                         editItem={this.state.editItem}
                         editCar={this.editCar}
+                    />
+
+                }
+                {this.state.isOpenDetail &&
+                    <ModalDetail
+                        isOpen={this.state.isOpenDetail}
+                        toggleModal={this.toggleModal}
+                        detailItem={this.state.detailItem}
                     />
 
                 }
@@ -137,7 +153,7 @@ class Product extends React.Component {
                                             <div className="col-2 text "> {item.year}</div>
 
                                             <div className="col-4">
-                                                <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faEye} /></button></span>
+                                                <span><button className="btn-primary edit" onClick={() => this.handleDetail(item)} ><FontAwesomeIcon icon={faEye} /></button></span>
                                                 <span><button className="btn-primary edit" onClick={() => this.handleEdit(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
                                                 <span>
                                                     <button className="btn-danger" onClick={() => this.handleDelete(item)}><FontAwesomeIcon icon={faTrashCan} /></button> </span>

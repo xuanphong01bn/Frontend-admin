@@ -67,7 +67,7 @@ class ModalEdit extends React.Component {
                     size='lg'
                     centered
                 >
-                    <ModalHeader toggle={() => this.toggle()}>Tạo mới admin</ModalHeader>
+                    <ModalHeader toggle={() => this.toggle()}>Sửa thông tin admin</ModalHeader>
                     <ModalBody>
                         <div className="container">
                             <div className="row">
