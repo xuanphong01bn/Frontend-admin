@@ -4,25 +4,20 @@ class ModalEdit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user_id: '',
-            name: '',
-            telephone: '',
-            address: '',
-            time_create: '',
             status: '',
         }
     }
     componentDidMount() {
         // console.log('list user la: ', this.props.editItem)
         // this.findUser();
-        let a = this.props.editItem;
-        this.setState({
-            user_id: a.user_id,
-            name: a.name,
-            telephone: a.telephone,
-            address: a.address,
-            time_create: a.time_create,
-        })
+        // let a = this.props.editItem;
+        // this.setState({
+        //     user_id: a.user_id,
+        //     name: a.name,
+        //     telephone: a.telephone,
+        //     address: a.address,
+        //     time_create: a.time_create,
+        // })
     }
     // findUser = () => {
     //     let a = this.props.listUser;
@@ -34,28 +29,28 @@ class ModalEdit extends React.Component {
         this.props.toggleModal()
     }
     // toggle: nút đóng, mở
-    handleOnchaneInput = (event, id) => {
-        let copyState = { ...this.state };
-        copyState[id] = event.target.value
-        let c = copyState[id];
-        console.log('ID cần tìm: ', c)
+    // handleOnchaneInput = (event, id) => {
+    //     let copyState = { ...this.state };
+    //     copyState[id] = event.target.value
+    //     let c = copyState[id];
+    //     console.log('ID cần tìm: ', c)
 
-        let a = this.props.listUser;
-        console.log('List User trong ham inpu la ', a)
-        let b = a.find(x => x.id === Number(c));
-        console.log('User cần tìm là: ', b);
-        // copyState[id] = event.target.value; // do id đã đặt bằng các trường trong state
-        copyState[id] = event.target.value
-        this.setState({
-            user_id: c,
-            name: b.username,
-            telephone: b.telephone,
-            address: b.address,
-            time_create: Date().toLocaleString(),
-        })
+    //     let a = this.props.listUser;
+    //     console.log('List User trong ham inpu la ', a)
+    //     let b = a.find(x => x.id === Number(c));
+    //     console.log('User cần tìm là: ', b);
+    //     // copyState[id] = event.target.value; // do id đã đặt bằng các trường trong state
+    //     copyState[id] = event.target.value
+    //     this.setState({
+    //         user_id: c,
+    //         name: b.username,
+    //         telephone: b.telephone,
+    //         address: b.address,
+    //         time_create: Date().toLocaleString(),
+    //     })
 
 
-    }
+    // }
     handleOnchaneStatus = (event) => {
         let a = event.target.value;
         this.setState({
@@ -82,7 +77,7 @@ class ModalEdit extends React.Component {
         // if (isValid === true) {
         //call API
         let a = this.props.editItem.id;
-        this.props.editBill(this.state.status, a);
+        this.props.editBill(this.state, a);
         // // }
         console.log(this.state.status);
         // console.log('>>> data modal', this.state)
@@ -93,7 +88,7 @@ class ModalEdit extends React.Component {
 
     }
     render() {
-
+        let { a } = this.props.editItem;
         // console.log('>>> check child props', this.props);
         // console.log('>>> check child open modal', this.props.isOpen);
         return (
@@ -105,35 +100,12 @@ class ModalEdit extends React.Component {
                     size='lg'
                     centered
                 >
-                    <ModalHeader toggle={() => this.toggle()}>Sửa trạng thái đơn</ModalHeader>
+                    <ModalHeader toggle={() => this.toggle()}>Cập nhật trạng thái đơn</ModalHeader>
                     <ModalBody>
                         <div className="container">
-                            <div className="row">
-                                <div className="col-6 ">
-                                    <label>UserId</label>
-                                    <div ><input type="text" style={{ width: '100%' }}
-                                        onChange={(event) => this.handleOnchaneInput(event, "user_id")}
-                                        value={this.state.user_id}
-                                    /></div>
 
-                                </div>
-                                <div className="col-6 ">
-                                    <label>Tên</label>
-                                    <div><input type="text" style={{ width: '100%' }}
-                                        // onChange={(event) => this.handleOnchaneInput(event, "name")}
-                                        value={this.state.name}
-                                    /></div>
-                                </div>
-                            </div>
                             <div className="row">
-                                <div className="col-6 ">
-                                    <label>SĐT</label>
-                                    <div><input type="text" style={{ width: '100%' }}
-                                        // onChange={(event) => this.handleOnchaneInput(event, "telephone")}
-                                        value={this.state.telephone}
-                                    /></div>
 
-                                </div>
                                 <div className="col-6 ">
                                     <label>Trạng Thái</label>
                                     <div>
@@ -148,19 +120,10 @@ class ModalEdit extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-12 ">
-                                    <label>Địa chỉ</label>
-                                    <div><input type="text" style={{ width: '100%' }}
-                                        // onChange={(event) => this.handleOnchaneInput(event, "address")}
-                                        value={this.state.address}
-                                    /></div>
-                                </div>
-                            </div>
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={() => this.handleEdit()}>Thêm mới</Button>{' '}
+                        <Button color="primary" onClick={() => this.handleEdit()}>Lưu</Button>{' '}
                         <Button color="secondary" onClick={() => this.toggle()}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
