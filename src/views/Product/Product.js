@@ -110,7 +110,7 @@ class Product extends React.Component {
             <div className="content">
                 <ModalCar
                     isOpen={this.state.isOpenModalCar}
-                    toggleCarModal={this.toggleCarModal}
+                    toggleCarModal={this.toggleModal}
                     createNewCar={this.createNewCar}
                 />
                 {this.state.isOpenEdit &&

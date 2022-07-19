@@ -9,7 +9,11 @@ class ModalEdit extends React.Component {
         }
     }
     componentDidMount() {
-
+        let a = this.props.adminEdit;
+        this.setState({
+            username: a.username,
+            password: a.password,
+        })
     }
     toggle = () => {
         // alert('me toggle')
