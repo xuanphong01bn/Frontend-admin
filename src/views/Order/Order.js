@@ -14,6 +14,8 @@ import { createNewCarService } from "../../services/service";
 import ModalOrder from "./ModalOrder";
 import { faTurkishLiraSign } from "@fortawesome/free-solid-svg-icons";
 import { createNewOrderService } from "../../services/service";
+import ModalEdit from "./ModalEdit";
+import { editBillService } from "../../services/service";
 class Order extends React.Component {
     constructor(props) {
         super(props);
@@ -21,8 +23,11 @@ class Order extends React.Component {
             listOrder: [],
             listUser: [],
             isOpenModalOrder: false,
+            isOpenEdit: false,
+            editItem: '',
         }
     }
+    // Hiển thị
     async componentDidMount() {
         await this.getAllOrderFromReact();
         await this.getAllUserFromReact();
@@ -50,7 +55,7 @@ class Order extends React.Component {
             listUser: res.data.data,
         })
     }
-
+    // Thêm mới
     handleAddNewCar = () => {
         this.setState({
             isOpenModalOrder: true,
@@ -76,6 +81,27 @@ class Order extends React.Component {
             toast.error('Lỗi')
         }
     }
+    // Sửa
+    handleEdit = (item) => {
+        this.setState({
+            isOpenEdit: true,
+            editItem: item,
+        })
+        console.log('edit item: ', this.state.editItem)
+    }
+    toggleModal = () => {
+        this.setState({
+            isOpenEdit: !this.state.isOpenEdit,
+        })
+    }
+    editBill = async (data, id) => {
+        await editBillService(data, id);
+        await this.getAllOrderFromReact();
+        await this.getAllOrderFromReact();
+        this.setState({
+            isOpenEdit: false,
+        })
+    }
     render() {
         let { listOrder, listUser } = this.state;
         return (
@@ -86,6 +112,15 @@ class Order extends React.Component {
                     toggleOrderModal={this.toggleOrderModal}
                     createNewOrder={this.createNewOrder}
                 />
+
+                }
+                {this.state.isOpenEdit &&
+                    <ModalEdit
+                        isOpen={this.state.isOpenEdit}
+                        editItem={this.state.editItem}
+                        toggleModal={this.toggleModal}
+                        editBill={this.editBill}
+                    />
 
                 }
                 <div className="page-title">Danh sách đơn hàng</div>
@@ -115,7 +150,7 @@ class Order extends React.Component {
 
                                             <div className="col-3">
                                                 <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faEye} /></button></span>
-                                                <span><button className="btn-primary edit" onClick={() => this.handleEditUser(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                                <span><button className="btn-primary edit" onClick={() => this.handleEdit(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
                                                 <span>
                                                     <button className="btn-danger" onClick={() => this.handleDeleteUser(item)}><FontAwesomeIcon icon={faTrashCan} /></button> </span>
                                             </div>

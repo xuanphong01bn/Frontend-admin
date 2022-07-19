@@ -62,7 +62,15 @@ const editCarService = (data, id) => {
         }
     });
 }
+const editBillService = (data, id) => {
+    return axios.put(`http://localhost:8000/bills/${id}`, data, {
+        headers: {
+            'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
+        }
+    });
+}
 export {
     createNewUserService, deleteUserService, editUserService, createNewAdminService, deleteAdminService,
     editAdminService, createNewCarService, createNewOrderService, editCarService
+    , editBillService
 }
