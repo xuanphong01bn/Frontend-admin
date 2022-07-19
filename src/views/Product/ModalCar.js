@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+// import Form from "react-bootstrap";
+// import FormGroup from "react-bootstrap";
+// import Label from "react-bootstrap";
+import { FormControl, FormGroup, Form } from "react-bootstrap";
 class ModalCar extends React.Component {
     constructor(props) {
         super(props);
@@ -44,6 +48,24 @@ class ModalCar extends React.Component {
     //     }
     //     return isValid;
     // }
+    handleOnchaneInputImage = (event) => {
+        let upfile = event.target.files[0];
+        console.log(upfile);
+        const reader = new FileReader();
+        const scope = this
+        reader.onload = function () {
+            scope.setState({
+                image: reader.result
+            })
+        }
+        if (upfile) {
+            reader.readAsDataURL(upfile);
+            let a = reader.result;
+        }
+        console.log(this.state.image)
+
+    }
+
     handleAddNewCar = () => {
         // let isValid = this.checkValideInput();
         // if (isValid === true) {
@@ -66,6 +88,7 @@ class ModalCar extends React.Component {
         // console.log('>>> check child open modal', this.props.isOpen);
         return (
             <div>
+
                 <Modal
                     isOpen={this.props.isOpen}
                     toggle={() => this.toggle()}
@@ -85,12 +108,15 @@ class ModalCar extends React.Component {
                                     /></div>
                                 </div>
                                 <div className="col-6 ">
+
                                     <label>Hình ảnh</label>
                                     <div>
                                         <input type="file" id="myfile" name="myfile"
-                                            onChange={(event) => this.handleOnchaneInput(event, "image")}
+                                            onChange={(event) => this.handleOnchaneInputImage(event)}
                                         />
+                                        <img src={this.state.image} />
                                     </div>
+
                                 </div>
                             </div>
                             <div className="row">

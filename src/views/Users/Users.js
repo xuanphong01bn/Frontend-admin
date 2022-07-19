@@ -155,7 +155,8 @@ class Users extends React.Component {
                     <div className="page-content">
                         <div className="row title ">
                             <span className="col-1 ">STT</span>
-                            <span className="col-2 ">Tên</span>
+                            <span className="col-1 ">UserID</span>
+                            <span className="col-1 ">Tên</span>
                             <span className="col-2 ">SĐT</span>
                             <span className="col-3 ">Email</span>
                             <span className="col-2 ">Địa chỉ</span>
@@ -167,7 +168,8 @@ class Users extends React.Component {
                                     return (
                                         <>
                                             <div className="col-1 text ">{index + 1}</div>
-                                            <div className="col-2 text ">{item.username}</div>
+                                            <div className="col-1 text ">{item.id} </div>
+                                            <div className="col-1 text ">{item.username} </div>
                                             <div className="col-2 text ">{item.telephone}</div>
                                             <div className="col-3 text ">{item.email}</div>
                                             <div className="col-2 text">

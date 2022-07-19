@@ -20,7 +20,7 @@ class ModalDetail extends React.Component {
 
         this.setState({
             name: a.name,
-            image: a.iamge,
+            image: a.image,
             description: a.description,
             price: a.price,
             year: a.year,
@@ -98,6 +98,7 @@ class ModalDetail extends React.Component {
                                     <label>Hình ảnh</label>
                                     <div>
                                         Hình ảnh này:
+                                        <img src={this.state.image} />
                                     </div>
                                 </div>
                             </div>
