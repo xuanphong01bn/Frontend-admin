@@ -69,88 +69,54 @@ class Login extends Component {
         console.log(this.state)
     }
     render() {
-        //JSX
-        let { isLoggin } = this.state;
         return ( //phải render ra một khối
             <>
-                {isLoggin ?
-                    <>  <Switch>
-                        <Route path="/home" exact>
-                            <Nav />
-                        </Route>
-                        <Route path="/list-product">
-                            <Nav />
-                            <Product />
-                        </Route>
-                        <Route path="/order">
-                            <Nav />
-                            <Order />
-                        </Route>
-                        <Route path="/addnewproduct">
-                            <Nav />
-                            <AddNewProduct />
-                        </Route>
-
-                        <Route path="/all-users">
-                            <Nav />
-                            <Users></Users>
-                        </Route>
-                        <Route path="/all-admins">
-                            <Nav />
-                            <Admins />
-                        </Route>
-                    </Switch>
-                    </> :
-                    <><div className='login-background'>
-                        <div className='login-container'>
-                            <div className='login-content'>
-                                <div className='col-12 text-login' style={{ color: 'black' }}>Login Admin</div>
-                                {/* Username */}
-                                <div className='col-12 form-group login-input'>
-                                    <label style={{ color: 'grey' }}>Username:</label>
-                                    <input type='text' className='form-control'
-                                        placeholder='Enter your username'
-                                        value={this.state.username}
-                                        onChange={(event) => this.handleOnChangeInput(event)} />
-                                </div>
-                                {/* Password */}
-                                <div className='col-12 form-group login-input'>
-                                    <label style={{ color: 'grey' }}>Password:</label>
-                                    <div className='custom-input-password'>
-                                        <span><input type={this.state.isShowPass ? 'text' : 'password'} className='form-control'
-                                            placeholder='Enter your password'
-                                            onChange={(event) => this.handleOnChangePassword(event)} /> </span>
-
-                                        <span>
-                                            <div onClick={() => this.handleShowHidePassword()}><p style={{ color: 'grey', cursor: 'pointer' }}>Show/Hide Password</p></div>
-
-                                            {/* cai nay de an hien password */}
-                                        </span>
-
-                                    </div>
-                                </div>
-                                <div className='col-12' style={{ color: 'red' }}>
-                                    {this.state.errMessage}
-                                </div>
-                                {/* Nut login */}
-                                <div className='col-12 '>
-                                    <button className='btn-login' onClick={() => this.handleLogin()}>Login</button>
-                                </div>
-
-                                <div className='col-12'>
-                                    <span className='forgot-password '>Forgot your password ?</span>
-                                </div>
-                                <div className='col-12 text-center'>
-                                    <span className='text-other-login mt-3'>Or login with:</span>
-                                </div>
-
+                <div className='login-background'>
+                    <div className='login-container'>
+                        <div className='login-content'>
+                            <div className='col-12 text-login' style={{ color: 'black' }}>Login Admin</div>
+                            {/* Username */}
+                            <div className='col-12 form-group login-input'>
+                                <label style={{ color: 'grey' }}>Username:</label>
+                                <input type='text' className='form-control'
+                                    placeholder='Enter your username'
+                                    value={this.state.username}
+                                    onChange={(event) => this.handleOnChangeInput(event)} />
                             </div>
+                            {/* Password */}
+                            <div className='col-12 form-group login-input'>
+                                <label style={{ color: 'grey' }}>Password:</label>
+                                <div className='custom-input-password'>
+                                    <span><input type={this.state.isShowPass ? 'text' : 'password'} className='form-control'
+                                        placeholder='Enter your password'
+                                        onChange={(event) => this.handleOnChangePassword(event)} /> </span>
+
+                                    <span>
+                                        <div onClick={() => this.handleShowHidePassword()}><p style={{ color: 'grey', cursor: 'pointer' }}>Show/Hide Password</p></div>
+
+                                        {/* cai nay de an hien password */}
+                                    </span>
+
+                                </div>
+                            </div>
+                            <div className='col-12' style={{ color: 'red' }}>
+                                {this.state.errMessage}
+                            </div>
+                            {/* Nut login */}
+                            <div className='col-12 '>
+                                <button className='btn-login' onClick={() => this.handleLogin()}>Login</button>
+                            </div>
+
+                            <div className='col-12'>
+                                <span className='forgot-password '>Forgot your password ?</span>
+                            </div>
+                            <div className='col-12 text-center'>
+                                <span className='text-other-login mt-3'>Or login with:</span>
+                            </div>
+
                         </div>
-                    </div></>
-
-                }
-
-
+                    </div>
+                </div>
             </>
         )
     }
