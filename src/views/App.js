@@ -19,38 +19,50 @@ import {
 } from "react-router-dom";
 import EditProduct from './EditProduct/EditProduct';
 import DetailOrder from './DetailOrder/DetailOrder';
+import Login from './Login/Login';
 
 // import ChildComponent from './Example/ChildComponent';
 function App() {
   return (
     <Router>
       <div className="App-hoi-Phong">
-        <Nav />
+
         <header className="App-header">
 
           <Switch>
             <Route path="/" exact>
+              <Login />
+            </Route>
+            <Route path="/home" exact>
+              <Nav />
               <Home />
             </Route>
             <Route path="/list-product">
+              <Nav />
               <Product />
             </Route>
             <Route path="/order">
+              <Nav />
               <Order />
             </Route>
             <Route path="/addnewproduct">
+              <Nav />
               <AddNewProduct />
             </Route>
             <Route path="/edit-product">
+              <Nav />
               <EditProduct></EditProduct>
             </Route>
             <Route path="/detail-order">
+              <Nav />
               <DetailOrder></DetailOrder>
             </Route>
             <Route path="/all-users">
+              <Nav />
               <Users></Users>
             </Route>
             <Route path="/all-admins">
+              <Nav />
               <Admins />
             </Route>
           </Switch>

@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { createNewUserService, deleteUserService } from "../../services/service";
 import ModalEdit from "./ModalEdit";
 import { editUserService } from "../../services/service";
+import Login from "../Login/Login";
 class Users extends React.Component {
     constructor(props) {
         super(props);
@@ -34,16 +35,18 @@ class Users extends React.Component {
      */
     async componentDidMount() {
         await this.getAllUserFromReact();
+        // console.log('jwt :', Login())
 
     }
     getAllUserFromReact = async () => {
         let res = await axios.get('http://localhost:8000/users', {
             headers: {
-                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
+                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgyNjgzMTEsImV4cCI6MTY1ODM1NDcxMSwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.7wfJVCqi-fsrtrAK6uyWF6yIe2euU2DrkhQgHd0WrYU'
             }
         });
-        console.log('>>>check res: ', res.data.data);
-
+        console.log('>>>check res: ', res);
+        let res2 = await axios.post('http://localhost:8000/admins/sign_in', { "username": "admin", "password": "123456" });
+        console.log('check res 2 :', res2.data)
         this.setState({
             listUser: res.data.data,
         })
@@ -98,7 +101,7 @@ class Users extends React.Component {
             console.log('data truyen len la: ', data)
             let res = await axios.put(`http://localhost:8000/users/${id}`, data, {
                 headers: {
-                    'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
+                    'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgyNjgzMTEsImV4cCI6MTY1ODM1NDcxMSwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.7wfJVCqi-fsrtrAK6uyWF6yIe2euU2DrkhQgHd0WrYU'
                 }
             });
             console.log('res edit user: ', res);

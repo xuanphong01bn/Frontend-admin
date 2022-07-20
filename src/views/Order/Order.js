@@ -39,7 +39,7 @@ class Order extends React.Component {
     getAllOrderFromReact = async () => {
         let res = await axios.get('http://localhost:8000/bills', {
             headers: {
-                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
+                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgyNjgzMTEsImV4cCI6MTY1ODM1NDcxMSwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.7wfJVCqi-fsrtrAK6uyWF6yIe2euU2DrkhQgHd0WrYU'
             }
         });
         console.log('>>>check res order ', res.data.data);
@@ -50,7 +50,7 @@ class Order extends React.Component {
     getAllUserFromReact = async () => {
         let res = await axios.get('http://localhost:8000/users', {
             headers: {
-                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
+                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgyNjgzMTEsImV4cCI6MTY1ODM1NDcxMSwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.7wfJVCqi-fsrtrAK6uyWF6yIe2euU2DrkhQgHd0WrYU'
             }
         });
         console.log('>>>check res user ', res.data.data);

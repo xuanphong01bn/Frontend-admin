@@ -31,7 +31,7 @@ class Admins extends React.Component {
     getAllAdminsService = async () => {
         let res = await axios.get('http://localhost:8000/admins', {
             headers: {
-                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgxNzMyNzAsImV4cCI6MTY1ODI1OTY3MCwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.MGyqDHIp2ja_OFXdUUaMOnQER6dZYfAn9SBINU6Hogg'
+                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE2NTgyNjgzMTEsImV4cCI6MTY1ODM1NDcxMSwiYXVkIjoibXlhZG1pbnMiLCJpZCI6MSwiaXNfYWRtaW4iOnRydWV9.7wfJVCqi-fsrtrAK6uyWF6yIe2euU2DrkhQgHd0WrYU'
             }
         });
         this.setState({
@@ -122,7 +122,7 @@ class Admins extends React.Component {
                                             <div className="col-4 text ">{index + 1}</div>
                                             <div className="col-4 text ">{item.username}</div>
                                             <div className="col-4">
-                                                <span><button className="btn-primary edit" onClick={() => this.handleEditAdmin(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span>
+                                                {/* <span><button className="btn-primary edit" onClick={() => this.handleEditAdmin(item)} ><FontAwesomeIcon icon={faPenToSquare} /></button></span> */}
                                                 <span>
                                                     <button className="btn-danger" onClick={() => this.handleDeleteAdmin(item)}><FontAwesomeIcon icon={faTrashCan} /></button>
 

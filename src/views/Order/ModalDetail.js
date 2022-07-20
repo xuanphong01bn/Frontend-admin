@@ -84,10 +84,21 @@ class ModalDetail extends React.Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-12 ">
+                                <div className="col-6 ">
                                     <label>Địa chỉ</label>
                                     <div>{this.state.address}</div>
                                 </div>
+                                <div className="col-6 ">
+                                    <label>Thời gian tạo đơn</label>
+                                    <div>{this.state.time_create}</div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 ">
+                                    <label>Danh sách sản phẩm</label>
+                                    <div>{this.state.listProducts}</div>
+                                </div>
+
                             </div>
                         </div>
                     </ModalBody>
