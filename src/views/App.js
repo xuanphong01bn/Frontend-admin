@@ -20,69 +20,74 @@ import {
 import EditProduct from './EditProduct/EditProduct';
 import DetailOrder from './DetailOrder/DetailOrder';
 import Login from './Login/Login';
+import React from 'react';
 
 // import ChildComponent from './Example/ChildComponent';
-function App() {
-  return (
-    <Router>
-      <div className="App-hoi-Phong">
+class App extends React.Component {
+  render() {
+    return (
+      <>
+        <Router>
+          <div className="App-hoi-Phong">
 
-        <header className="App-header">
+            <header className="App-header">
+              {0 ? <>HEHE</> : <Switch>
+                <Route path="/home" exact>
+                  <Nav />
+                  <Home />
+                </Route>
+                <Route path="/list-product">
+                  <Nav />
+                  <Product />
+                </Route>
+                <Route path="/order">
+                  <Nav />
+                  <Order />
+                </Route>
+                <Route path="/addnewproduct">
+                  <Nav />
+                  <AddNewProduct />
+                </Route>
+                <Route path="/edit-product">
+                  <Nav />
+                  <EditProduct></EditProduct>
+                </Route>
+                <Route path="/detail-order">
+                  <Nav />
+                  <DetailOrder></DetailOrder>
+                </Route>
+                <Route path="/all-users">
+                  <Nav />
+                  <Users></Users>
+                </Route>
+                <Route path="/all-admins">
+                  <Nav />
+                  <Admins />
+                </Route>
+              </Switch>
+              }
 
-          <Switch>
-            <Route path="/" exact>
-              <Login />
-            </Route>
-            <Route path="/home" exact>
-              <Nav />
-              <Home />
-            </Route>
-            <Route path="/list-product">
-              <Nav />
-              <Product />
-            </Route>
-            <Route path="/order">
-              <Nav />
-              <Order />
-            </Route>
-            <Route path="/addnewproduct">
-              <Nav />
-              <AddNewProduct />
-            </Route>
-            <Route path="/edit-product">
-              <Nav />
-              <EditProduct></EditProduct>
-            </Route>
-            <Route path="/detail-order">
-              <Nav />
-              <DetailOrder></DetailOrder>
-            </Route>
-            <Route path="/all-users">
-              <Nav />
-              <Users></Users>
-            </Route>
-            <Route path="/all-admins">
-              <Nav />
-              <Admins />
-            </Route>
-          </Switch>
-        </header>
+            </header>
 
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
 
-      </div>
-    </Router>
-  );
+          </div>
+        </Router>
+      </>
+
+    );
+  }
+
 }
 
 export default App;
